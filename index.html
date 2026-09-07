@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Connect SG</title>
+  <meta name="description" content="Discover Singapore's lesser-known heritage and cultural happenings.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">HC</span><div><strong>Heritage Connect</strong><small>Singapore</small></div></div>
+    <nav><button data-view="home" class="nav-btn active">Discover</button><button data-view="map" class="nav-btn">Explore Map</button><button data-view="journey" class="nav-btn">My Journey</button></nav>
+    <div class="pass-mini"><span>SG Culture Pass</span><b id="miniBalance">$100</b></div>
+  </header>
+
+  <main>
+    <section id="home" class="view active-view">
+      <div class="hero">
+        <div><p class="eyebrow">CULTURE IS CLOSER THAN YOU THINK</p><h1>Find the stories<br><em>hiding in plain sight.</em></h1><p class="hero-copy">Discover lesser-known historical places, cultural happenings and experiences around Singapore — then get out there and experience them.</p><div class="hero-actions"><button class="primary" data-scroll="discover">Explore near me →</button><button class="ghost" data-scroll="events">See what's happening</button></div></div>
+        <div class="hero-card"><div class="pulse">● LIVE CULTURE</div><div class="big-pin">⌖</div><h3>Something is happening nearby.</h3><p>Traditional craft demonstration · 0.8 km</p><button class="small-btn" data-view="map">Explore the area</button></div>
+      </div>
+
+      <div class="stats"><div><b>1,240+</b><span>stories discovered</span></div><div><b>86</b><span>lesser-known places</span></div><div><b>42</b><span>happenings this week</span></div><div><b id="statsBalance">$100</b><span>Culture Pass demo balance</span></div></div>
+
+      <section id="discover" class="section"><div class="section-head"><div><p class="eyebrow">PERSONALISED FOR YOU</p><h2>Places worth getting off the beaten path for.</h2></div><div class="chips" id="interestChips"><button class="chip selected" data-interest="all">All</button><button class="chip" data-interest="food">Food & traditions</button><button class="chip" data-interest="history">History</button><button class="chip" data-interest="craft">Arts & crafts</button></div></div><div id="placeGrid" class="card-grid"></div></section>
+
+      <section id="events" class="section tinted"><div class="section-head"><div><p class="eyebrow">HAPPENING THIS WEEK</p><h2>Give yourself a reason to go.</h2></div><button class="outline" id="passOnly">Show Culture Pass eligible</button></div><div id="eventGrid" class="event-grid"></div></section>
+
+      <section class="how"><div><p class="eyebrow">HOW IT WORKS</p><h2>From knowing about culture<br>to <em>living it.</em></h2></div><div class="steps"><div><span>01</span><h3>Discover</h3><p>Find places and cultural happenings based on your interests and location.</p></div><div><span>02</span><h3>Experience</h3><p>Visit, participate, taste, listen and meet the people behind the story.</p></div><div><span>03</span><h3>Contribute</h3><p>Complete challenges and add your own memories to Singapore's living heritage.</p></div></div></section>
+    </section>
+
+    <section id="map" class="view"><div class="page-heading"><p class="eyebrow">EXPLORE</p><h1>Heritage around you.</h1><p>Imagine opening the app on a Saturday afternoon and finding something worth walking towards.</p></div><div class="map-layout"><div class="fake-map"><div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="district d1">KATONG</div><div class="district d2">JOO CHIAT</div><div class="district d3">GEYLANG</div><button class="map-pin p1">1</button><button class="map-pin p2">2</button><button class="map-pin p3">3</button><div class="you">YOU</div></div><div class="near-list"><h2>Nearby discoveries</h2><div class="near-item"><span>01</span><div><b>Old Joo Chiat Story House</b><small>0.8 km · History</small></div><button data-place="Old Joo Chiat Story House">View</button></div><div class="near-item"><span>02</span><div><b>Geylang Serai Food Stories</b><small>1.4 km · Food & traditions</small></div><button data-place="Geylang Serai Food Stories">View</button></div><div class="near-item"><span>03</span><div><b>Katong Paper Craft Studio</b><small>2.1 km · Arts & crafts</small></div><button data-place="Katong Paper Craft Studio">View</button></div></div></div></section>
+
+    <section id="journey" class="view"><div class="page-heading"><p class="eyebrow">MY JOURNEY</p><h1>Your culture, your story.</h1><p>Participation should feel like a journey, not homework.</p></div><div class="journey-top"><div class="progress-card"><div class="level">LEVEL 02</div><h2>Cultural Explorer</h2><p>180 / 300 points to your next level</p><div class="progress"><span style="width:60%"></span></div><div class="journey-stats"><span><b id="points">180</b> points</span><span><b>4</b> places</span><span><b id="completedCount">2</b> activities</span></div></div><div class="challenge-card"><p class="eyebrow">THIS MONTH</p><h2>Then & Now</h2><p>Find an old photograph of a Singapore place, visit it today and compare how it has changed.</p><button class="primary" id="challengeBtn">Start challenge +50</button></div></div><div class="timeline"><h2>Your recent discoveries</h2><div class="timeline-item"><span>SEP 06</span><div><b>Traditional Wayang Workshop</b><p>You experienced a traditional art form.</p></div><strong>+50</strong></div><div class="timeline-item"><span>SEP 03</span><div><b>Joo Chiat Story House</b><p>You discovered a lesser-known local story.</p></div><strong>+40</strong></div></div></section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
