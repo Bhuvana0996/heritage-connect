@@ -1,0 +1,103 @@
+/* Device-first polish layer: keeps the same Heritage Connect identity but adapts the composition to screen size/orientation. */
+:root{--hc-coral:#ff5b45;--hc-yellow:#ffc83d;--hc-blue:#315cff;--hc-purple:#7b4dff;--hc-ink:#151515;--hc-cream:#fff8ec}
+img{display:block;max-width:100%}
+button{-webkit-tap-highlight-color:transparent}
+@media (min-width:1200px){
+  .heroNew{max-width:1440px;grid-template-columns:minmax(390px,.82fr) minmax(560px,1.18fr);padding-left:56px;padding-right:56px;gap:48px}
+  .heroImage{min-height:590px}
+  .heroText h1{font-size:clamp(64px,5.8vw,94px)}
+  .featureGrid{grid-template-rows:270px 270px}
+}
+@media (min-width:681px) and (max-width:1199px){
+  .topbar{padding:0 22px;gap:18px}
+  .topRight .search{width:210px}
+  .heroNew{grid-template-columns:1fr 1fr;padding:34px 28px;gap:24px;min-height:540px}
+  .heroText h1{font-size:clamp(48px,6vw,72px);letter-spacing:-4px}
+  .heroImage{min-height:500px}
+  .colourRail{grid-template-columns:repeat(4,1fr)}
+  .colourRail>div{grid-column:span 4;min-height:75px}
+  .featureGrid{grid-template-columns:1fr 1fr;grid-template-rows:260px 260px}
+  .feature.tall{grid-row:span 2}
+  .foodGrid{grid-template-columns:1fr}
+  .experienceGrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  html,body,#root,.app{width:100%;min-width:0;overflow-x:hidden}
+  body{background:var(--hc-cream)}
+  .topbar{height:62px;padding:0 12px;gap:8px}
+  .logo{min-width:38px}
+  .logo span{width:36px;height:36px;border-radius:11px}
+  .topRight{margin-left:auto;gap:6px}
+  .search{width:38px!important;height:38px!important;padding:0!important;justify-content:center;border:1px solid #ded4c5!important;background:var(--hc-cream)!important}
+  .walletTop{height:38px;padding:0 10px!important}
+  .walletTop b{font-size:10px}
+  .avatar{width:36px;height:36px}
+  .heroNew{display:flex;flex-direction:column;padding:24px 16px 18px;gap:18px;min-height:0}
+  .heroText{padding:0}
+  .kicker{font-size:9px}
+  .heroText h1{font-size:clamp(43px,13vw,58px);letter-spacing:-3px;line-height:.91;margin:18px 0}
+  .heroText>p{font-size:13px;line-height:1.55;margin-bottom:0}
+  .heroBtns{margin-top:20px;gap:10px}
+  .hotBtn{padding:12px 14px;font-size:11px}
+  .plainBtn{font-size:11px}
+  .heroImage{width:100%;min-height:390px;height:58vh;max-height:520px;border-radius:22px;box-shadow:6px 6px 0 var(--hc-blue)}
+  .heroOverlay{left:20px;bottom:20px}
+  .heroOverlay h2{font-size:34px;line-height:.92;margin:8px 0 14px}
+  .photoCredit{right:12px;top:12px;font-size:7px;padding:6px 8px}
+  .colourRail{grid-template-columns:1fr 1fr}
+  .colourRail>div{grid-column:span 2;min-height:78px;padding:14px 16px}
+  .colourRail>button{min-height:78px;padding:13px 14px;font-size:10px}
+  .hiddenSection,.foodSection{padding:48px 16px}
+  .sectionIntro{margin-bottom:20px}
+  .sectionIntro h2{font-size:32px;line-height:1}
+  .featureGrid{display:flex;flex-direction:column;gap:12px}
+  .feature{height:255px;min-height:255px}
+  .featureText h3{font-size:23px}
+  .splitStory{display:flex;flex-direction:column;padding:0 16px;margin-bottom:46px}
+  .storyImage{min-height:270px;height:270px;border-radius:22px 22px 0 0}
+  .storyCopy{padding:34px 24px;border-radius:0 0 22px 22px}
+  .storyCopy h2{font-size:36px}
+  .storyCopy p{font-size:13px}
+  .foodGrid{grid-template-columns:1fr;gap:12px}
+  .foodGrid article{display:block;border-radius:20px}
+  .foodGrid img{height:210px}
+  .foodGrid article>div{padding:20px}
+  .foodGrid h3{font-size:24px}
+  .passBanner{padding:44px 18px;display:flex;flex-direction:column;align-items:flex-start}
+  .passBanner h2{font-size:38px}
+  .passBanner p{font-size:12px}
+  .passCircle{width:150px;height:150px;align-self:center;margin:8px auto 0}
+  .listing{padding:40px 16px 92px}
+  .listingHead{display:block;margin-bottom:24px}
+  .listingHead h1{font-size:45px;letter-spacing:-3px}
+  .near,.passMini{margin-top:18px;max-width:100%;width:max-content}
+  .chips{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;margin-right:-16px;padding-right:16px}
+  .chips button{white-space:nowrap}
+  .placeList,.experienceGrid,.journeyNew{grid-template-columns:1fr;display:grid;gap:14px}
+  .newPlace{border-radius:20px}
+  .newPhoto{height:230px}
+  .newInfo{padding:17px}
+  .newInfo h3{font-size:22px}
+  .newInfo p{font-size:11px}
+  .journeyCardNew{min-height:230px;padding:24px}
+  .modalBack{padding:10px}
+  .modalNew{width:100%;max-height:92vh;border-radius:20px;box-shadow:7px 7px 0 var(--hc-yellow)}
+  .modalNew>img{height:205px}
+  .modalBody{padding:20px}
+  .modalBody h2{font-size:30px}
+  .modalStats{flex-wrap:wrap}
+  .toast{bottom:78px;max-width:calc(100vw - 28px);text-align:center}
+  .mobileNav{padding-bottom:max(7px,env(safe-area-inset-bottom));min-height:62px}
+}
+@media (max-width:680px) and (orientation:landscape){
+  .heroNew{display:grid;grid-template-columns:1fr 1fr;padding:18px 18px;align-items:stretch}
+  .heroText h1{font-size:clamp(34px,7vw,52px)}
+  .heroImage{height:calc(100vh - 100px);min-height:300px}
+  .colourRail>div,.colourRail>button{min-height:64px}
+  .featureGrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 220px}
+  .feature{height:auto;min-height:0}
+  .foodGrid{grid-template-columns:1fr 1fr}
+  .foodGrid article{display:grid;grid-template-columns:1fr 1fr}
+  .foodGrid img{height:190px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
