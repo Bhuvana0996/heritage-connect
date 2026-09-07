@@ -3,39 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heritage Connect SG</title>
-  <meta name="description" content="Discover Singapore's lesser-known heritage and cultural happenings.">
+  <meta name="theme-color" content="#173f35">
+  <title>Heritage Connect SG — Discover. Experience. Belong.</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="onboarding" class="modal-backdrop hidden">
+    <div class="modal onboarding-modal">
+      <button class="modal-close" data-close="onboarding" aria-label="Close">×</button>
+      <span class="kicker">WELCOME TO HERITAGE CONNECT</span>
+      <h2>What makes you curious?</h2>
+      <p>Pick a few interests. We'll shape your discovery feed around them.</p>
+      <div id="interestPicker" class="interest-picker">
+        <button data-pref="history">🏛 History</button><button data-pref="food">🍜 Food & traditions</button><button data-pref="craft">🧵 Arts & crafts</button><button data-pref="community">🤝 Community stories</button>
+      </div>
+      <button class="btn primary full" id="savePreferences">Build my feed →</button>
+    </div>
+  </div>
+
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">HC</span><div><strong>Heritage Connect</strong><small>Singapore</small></div></div>
-    <nav><button data-view="home" class="nav-btn active">Discover</button><button data-view="map" class="nav-btn">Explore Map</button><button data-view="journey" class="nav-btn">My Journey</button></nav>
-    <div class="pass-mini"><span>SG Culture Pass</span><b id="miniBalance">$100</b></div>
+    <a class="brand" href="#" data-view="discover"><span class="brand-mark">HC</span><span><strong>Heritage Connect</strong><small>Singapore</small></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-view="discover">Discover</button>
+      <button class="nav-btn" data-view="explore">Explore</button>
+      <button class="nav-btn" data-view="journey">My Journey</button>
+    </nav>
+    <button class="pass-pill" data-view="pass"><span>SG Culture Pass</span><b id="headerBalance">$100</b></button>
   </header>
 
   <main>
-    <section id="home" class="view active-view">
+    <section id="discover" class="view active-view">
       <div class="hero">
-        <div><p class="eyebrow">CULTURE IS CLOSER THAN YOU THINK</p><h1>Find the stories<br><em>hiding in plain sight.</em></h1><p class="hero-copy">Discover lesser-known historical places, cultural happenings and experiences around Singapore — then get out there and experience them.</p><div class="hero-actions"><button class="primary" data-scroll="discover">Explore near me →</button><button class="ghost" data-scroll="events">See what's happening</button></div></div>
-        <div class="hero-card"><div class="pulse">● LIVE CULTURE</div><div class="big-pin">⌖</div><h3>Something is happening nearby.</h3><p>Traditional craft demonstration · 0.8 km</p><button class="small-btn" data-view="map">Explore the area</button></div>
+        <div class="hero-copy-wrap">
+          <span class="kicker">CULTURE IS CLOSER THAN YOU THINK</span>
+          <h1>Find the stories<br><i>hiding in plain sight.</i></h1>
+          <p>Discover overlooked places, local stories and things happening around Singapore — matched to what you care about.</p>
+          <div class="hero-actions"><button class="btn primary" data-scroll="discoverFeed">Explore near me <span>→</span></button><button class="btn secondary" data-view="explore">Open map</button></div>
+          <div class="trust-row"><span>✦ Curated discoveries</span><span>⌖ Nearby experiences</span><span>◉ Demo prototype</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card card-a"><span class="dot live"></span> HAPPENING NEARBY <b>Traditional craft workshop</b><small>0.8 km · Today · $15</small></div>
+          <div class="map-art"><span class="map-label l1">KATONG</span><span class="map-label l2">JOO CHIAT</span><span class="map-label l3">GEYLANG</span><span class="map-road road-a"></span><span class="map-road road-b"></span><span class="map-road road-c"></span><button class="art-pin pin-a">01</button><button class="art-pin pin-b">02</button><span class="you-pin">YOU</span></div>
+          <div class="floating-card card-b"><span>YOUR NEXT DISCOVERY</span><b>Peranakan food stories</b><small>Because you saved Food & traditions</small></div>
+        </div>
       </div>
 
-      <div class="stats"><div><b>1,240+</b><span>stories discovered</span></div><div><b>86</b><span>lesser-known places</span></div><div><b>42</b><span>happenings this week</span></div><div><b id="statsBalance">$100</b><span>Culture Pass demo balance</span></div></div>
+      <div class="problem-band"><div><span class="kicker">THE GAP WE'RE EXPLORING</span><h2>We know the landmarks.<br>But what about the stories around them?</h2></div><p>Heritage Connect turns <strong>passive awareness</strong> into a reason to <strong>discover, experience and participate</strong> — especially beyond the places people already know.</p></div>
 
-      <section id="discover" class="section"><div class="section-head"><div><p class="eyebrow">PERSONALISED FOR YOU</p><h2>Places worth getting off the beaten path for.</h2></div><div class="chips" id="interestChips"><button class="chip selected" data-interest="all">All</button><button class="chip" data-interest="food">Food & traditions</button><button class="chip" data-interest="history">History</button><button class="chip" data-interest="craft">Arts & crafts</button></div></div><div id="placeGrid" class="card-grid"></div></section>
+      <section class="section" id="discoverFeed">
+        <div class="section-head"><div><span class="kicker">MADE FOR YOU</span><h2>Worth getting off the beaten path for.</h2><p>Based on your interests and what is nearby.</p></div><button class="text-btn" id="editPrefs">Edit interests</button></div>
+        <div class="searchbar"><span>⌕</span><input id="searchInput" placeholder="Search places, stories or traditions..." aria-label="Search discoveries"><button id="clearSearch">Clear</button></div>
+        <div class="filter-row"><div id="categoryFilters" class="chips"><button class="chip active" data-category="all">All</button><button class="chip" data-category="history">History</button><button class="chip" data-category="food">Food & traditions</button><button class="chip" data-category="craft">Arts & crafts</button><button class="chip" data-category="community">Community</button></div><span id="resultCount" class="result-count"></span></div>
+        <div id="placeGrid" class="place-grid"></div>
+      </section>
 
-      <section id="events" class="section tinted"><div class="section-head"><div><p class="eyebrow">HAPPENING THIS WEEK</p><h2>Give yourself a reason to go.</h2></div><button class="outline" id="passOnly">Show Culture Pass eligible</button></div><div id="eventGrid" class="event-grid"></div></section>
+      <section class="section soft" id="eventsSection">
+        <div class="section-head"><div><span class="kicker">GIVE YOURSELF A REASON TO GO</span><h2>Happening this week.</h2><p>Sample event data for the prototype. Eligible experiences can be connected to the official Culture Pass booking flow later.</p></div><button class="toggle-btn" id="passFilter">◉ Culture Pass eligible</button></div>
+        <div id="eventGrid" class="event-grid"></div>
+      </section>
 
-      <section class="how"><div><p class="eyebrow">HOW IT WORKS</p><h2>From knowing about culture<br>to <em>living it.</em></h2></div><div class="steps"><div><span>01</span><h3>Discover</h3><p>Find places and cultural happenings based on your interests and location.</p></div><div><span>02</span><h3>Experience</h3><p>Visit, participate, taste, listen and meet the people behind the story.</p></div><div><span>03</span><h3>Contribute</h3><p>Complete challenges and add your own memories to Singapore's living heritage.</p></div></div></section>
+      <section class="culture-pass-banner"><div class="pass-icon">$</div><div><span class="kicker">YOUR CULTURE PASS</span><h2>Turn your $<span id="bannerBalance">100</span> into experiences.</h2><p>The app doesn't replace Culture Pass. It helps you discover what you could actually use it for.</p></div><button class="btn light" data-view="pass">See eligible experiences →</button></section>
     </section>
 
-    <section id="map" class="view"><div class="page-heading"><p class="eyebrow">EXPLORE</p><h1>Heritage around you.</h1><p>Imagine opening the app on a Saturday afternoon and finding something worth walking towards.</p></div><div class="map-layout"><div class="fake-map"><div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="district d1">KATONG</div><div class="district d2">JOO CHIAT</div><div class="district d3">GEYLANG</div><button class="map-pin p1">1</button><button class="map-pin p2">2</button><button class="map-pin p3">3</button><div class="you">YOU</div></div><div class="near-list"><h2>Nearby discoveries</h2><div class="near-item"><span>01</span><div><b>Old Joo Chiat Story House</b><small>0.8 km · History</small></div><button data-place="Old Joo Chiat Story House">View</button></div><div class="near-item"><span>02</span><div><b>Geylang Serai Food Stories</b><small>1.4 km · Food & traditions</small></div><button data-place="Geylang Serai Food Stories">View</button></div><div class="near-item"><span>03</span><div><b>Katong Paper Craft Studio</b><small>2.1 km · Arts & crafts</small></div><button data-place="Katong Paper Craft Studio">View</button></div></div></div></section>
+    <section id="explore" class="view">
+      <div class="page-title"><span class="kicker">EXPLORE</span><h1>Heritage around you.</h1><p>Don't search for a landmark. Find a reason to walk towards a story.</p></div>
+      <div class="explore-toolbar"><div class="location-pill">⌖ <strong>Singapore</strong><span>Near you · demo location</span></div><div class="map-filters"><button class="chip active" data-map-filter="all">All</button><button class="chip" data-map-filter="history">History</button><button class="chip" data-map-filter="food">Food</button><button class="chip" data-map-filter="craft">Craft</button></div></div>
+      <div class="explore-layout"><div class="interactive-map" id="interactiveMap"><div class="map-grid"></div><div class="map-water"></div><div class="map-street s1"></div><div class="map-street s2"></div><div class="map-street s3"></div><div class="map-street s4"></div><span class="map-area a1">KATONG</span><span class="map-area a2">JOO CHIAT</span><span class="map-area a3">GEYLANG SERAI</span><span class="map-area a4">KAMPONG GLAM</span><button class="map-marker m1" data-place-id="1">1</button><button class="map-marker m2" data-place-id="2">2</button><button class="map-marker m3" data-place-id="3">3</button><button class="map-marker m4" data-place-id="4">4</button><div class="current-location">YOU</div><div class="map-controls"><button id="zoomIn">+</button><button id="zoomOut">−</button></div></div>
+        <aside class="nearby-panel"><div class="panel-head"><div><span class="kicker">4 DISCOVERIES</span><h2>Nearby</h2></div><span class="mini-status">● Live demo</span></div><div id="nearbyList"></div></aside></div>
+    </section>
 
-    <section id="journey" class="view"><div class="page-heading"><p class="eyebrow">MY JOURNEY</p><h1>Your culture, your story.</h1><p>Participation should feel like a journey, not homework.</p></div><div class="journey-top"><div class="progress-card"><div class="level">LEVEL 02</div><h2>Cultural Explorer</h2><p>180 / 300 points to your next level</p><div class="progress"><span style="width:60%"></span></div><div class="journey-stats"><span><b id="points">180</b> points</span><span><b>4</b> places</span><span><b id="completedCount">2</b> activities</span></div></div><div class="challenge-card"><p class="eyebrow">THIS MONTH</p><h2>Then & Now</h2><p>Find an old photograph of a Singapore place, visit it today and compare how it has changed.</p><button class="primary" id="challengeBtn">Start challenge +50</button></div></div><div class="timeline"><h2>Your recent discoveries</h2><div class="timeline-item"><span>SEP 06</span><div><b>Traditional Wayang Workshop</b><p>You experienced a traditional art form.</p></div><strong>+50</strong></div><div class="timeline-item"><span>SEP 03</span><div><b>Joo Chiat Story House</b><p>You discovered a lesser-known local story.</p></div><strong>+40</strong></div></div></section>
+    <section id="pass" class="view">
+      <div class="page-title compact"><span class="kicker">SG CULTURE PASS</span><h1>Your credits, your next experience.</h1><p>Prototype view — the balance and transactions below are simulated.</p></div>
+      <div class="pass-dashboard"><div class="wallet-card"><div class="wallet-top"><span>SG CULTURE PASS</span><span>DEMO</span></div><strong id="walletBalance">$100</strong><p>Available demo credits</p><div class="wallet-bar"><span id="walletBar"></span></div><small>Use credits on eligible local arts & heritage experiences.</small></div><div class="pass-info"><span class="kicker">THE ROLE OF HERITAGE CONNECT</span><h2>Culture Pass gives access.<br><i>We give you a reason to use it.</i></h2><div class="flow"><span>01 <b>Discover</b></span><span>02 <b>Choose</b></span><span>03 <b>Experience</b></span></div><button class="btn primary" data-view="discover">Find experiences →</button></div></div>
+      <div class="section no-pad"><div class="section-head"><div><span class="kicker">ELIGIBLE EXPERIENCES</span><h2>What could you spend it on?</h2></div></div><div id="passEventGrid" class="event-grid"></div></div>
+    </section>
+
+    <section id="journey" class="view">
+      <div class="page-title"><span class="kicker">MY JOURNEY</span><h1>Your culture, your story.</h1><p>Participation should feel like a journey, not homework.</p></div>
+      <div class="journey-dashboard"><div class="profile-card"><div class="avatar">B</div><div><span class="kicker">LEVEL 02</span><h2>Cultural Explorer</h2><p>You're building a habit of discovering Singapore.</p></div><div class="level-points"><strong id="points">180</strong><span>/ 300 pts</span></div><div class="progress"><span id="progressBar"></span></div></div><div class="journey-stat"><span>DISCOVERIES</span><strong id="discoveriesCount">4</strong><small>places explored</small></div><div class="journey-stat"><span>ACTIVITIES</span><strong id="completedCount">2</strong><small>experiences joined</small></div><div class="journey-stat"><span>SAVED</span><strong id="savedCount">0</strong><small>for later</small></div></div>
+      <div class="journey-grid"><div class="challenge-panel"><div class="challenge-art">THEN<br><i>&</i><br>NOW</div><div><span class="kicker">FEATURED CHALLENGE · +50 PTS</span><h2>See how a place changed.</h2><p>Find an old photograph of a Singapore place, visit it today and compare the past with the present.</p><button class="btn primary" id="challengeBtn">Start challenge</button></div></div><div class="saved-panel"><div class="section-head"><div><span class="kicker">BOOKMARKS</span><h2>Saved for later</h2></div></div><div id="savedList" class="saved-list"><div class="empty-state">Save a place from Discover and it'll appear here.</div></div></div></div>
+      <div class="timeline-panel"><span class="kicker">YOUR ACTIVITY</span><h2>Recent discoveries</h2><div id="timeline"></div></div>
+    </section>
   </main>
 
-  <div id="toast" class="toast"></div>
+  <div id="detailModal" class="modal-backdrop hidden"><div class="modal detail-modal"><button class="modal-close" data-close="detailModal" aria-label="Close">×</button><div id="detailContent"></div></div></div>
+  <div id="bookingModal" class="modal-backdrop hidden"><div class="modal booking-modal"><button class="modal-close" data-close="bookingModal" aria-label="Close">×</button><span class="kicker">JOIN EXPERIENCE</span><h2 id="bookingTitle">Book</h2><p id="bookingDescription"></p><div class="booking-summary"><span>Total</span><strong id="bookingPrice">$0</strong></div><p class="demo-note">Prototype only. No real payment or reservation will be made.</p><button class="btn primary full" id="confirmBooking">Confirm demo booking →</button></div></div>
+  <div id="toast" class="toast" role="status"></div>
+  <nav class="mobile-nav"><button data-view="discover" class="active">⌂<span>Discover</span></button><button data-view="explore">⌖<span>Explore</span></button><button data-view="journey">◒<span>Journey</span></button><button data-view="pass">$<span>Pass</span></button></nav>
   <script src="app.js"></script>
 </body>
 </html>
