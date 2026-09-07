@@ -4,13 +4,13 @@ import { Search, MapPin, Bookmark, Compass, User, ArrowUpRight, Heart, ChevronRi
 import './styles.css';
 
 const IMG = {
-  kampong: 'https://www.expedia.com.sg/stories/wp-content/uploads/2022/05/kampong-lorong-buangkok.jpg',
-  shelter: 'https://trishawuncle.com.sg/wp-content/uploads/2025/09/Tiong-Bahru-Air-Raid-Shelter-Historical-WWII-Site.jpg',
+  kampong: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Kampong_Lorong_Buangkok_entrance.jpg',
+  shelter: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tiong_Bahru_Air_Raid_Shelter_-_2023-0506.jpg',
   keppel: 'https://media2.thrillophilia.com/images/photos/000/381/235/original/1648018661_shutterstock_1999678040.jpg?crop=fill&fetch_format=auto&flags=strip_profile&format=jpg&gravity=center&height=900&quality=auto&sign_url=true&width=1400',
   fuyong: 'https://stacked-editorial.sgp1.digitaloceanspaces.com/editorial/wp-content/uploads/2022/06/15115159/fuyong-estate-landed-road-2.jpg',
-  sembawang: 'https://d34w7g4gy10iej.cloudfront.net/photos/2505/9074880.jpg',
-  laksa: 'https://i0.wp.com/www.nothingfamiliar.com/wp-content/uploads/2020/04/Best-Singapore-Food.jpg?ssl=1&w=2048',
-  kaya: 'https://live.staticflickr.com/65535/50348392008_672877844d_h.jpg'
+  sembawang: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Singapore_map_1942.jpg',
+  laksa: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Katong_Laksa.jpg',
+  kaya: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Kaya_toast_from_Ya_Kun_Kaya_Toast%2C_Singapore_-_20160813.jpg'
 };
 const places = [
  {id:1,name:'Kampong Lorong Buangkok',area:'Buangkok',type:'Living heritage',tag:'HIDDEN SINGAPORE',mins:'18 min',image:IMG.kampong,desc:'Singapore’s last surviving mainland kampong — a living community shaped by Chinese and Malay families and gotong royong.'},
