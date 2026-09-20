@@ -43,7 +43,8 @@ const open=url=>window.open(url,'_blank','noopener,noreferrer');
 
 
 function MobileShell({children}){return <div className="mobileOnly"><div className="mobileTop"><button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}><b>HC</b> HERITAGE CONNECT</button><span>Singapore, deeper.</span></div>{children}</div>}
-\nfunction App(){
+
+function App(){
  const [page,setPage]=useState('home'),[detail,setDetail]=useState(null),[saved,setSaved]=useState(()=>JSON.parse(localStorage.getItem('hc-saved')||'[]')),[query,setQuery]=useState('');
  const [prefs,setPrefs]=useState(()=>JSON.parse(localStorage.getItem('hc-prefs')||'null'));
  const [plan,setPlan]=useState(null);
