@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {Search,MapPin,Bookmark,Compass,ArrowLeft,ArrowRight,ExternalLink,MessageCircle,Send,Utensils,Landmark,BookOpen,Ticket,Heart,ChevronRight,Globe2,X,Trophy,Flame,Star,Check,Gift,Users,Navigation,Play,Share2,Lock,Clock,Coins,Target,Sparkles} from 'lucide-react';
+import {Search,MapPin,Bookmark,Compass,ArrowLeft,ArrowRight,ExternalLink,MessageCircle,Send,Utensils,Landmark,BookOpen,Ticket,Heart,ChevronRight,Globe2,X,Trophy,Flame,Star,Check,Gift,Users,User,Navigation,Play,Share2,Lock,Clock,Coins,Target,Sparkles} from 'lucide-react';
 import './styles-v2.css';
 
 const PASS='https://www.sgculturepass.gov.sg/?lang=en';
