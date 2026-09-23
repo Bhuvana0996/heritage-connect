@@ -121,7 +121,7 @@ function App(){
  const award=(amount,reason,id)=>{if(id&&done.includes(id))return false;const nx=xp+amount;setXp(nx);localStorage.setItem('hc-xp',nx);if(id){const nd=[...done,id];setDone(nd);localStorage.setItem('hc-missions',JSON.stringify(nd))}setToast('+'+amount+' Culture Coins · '+reason);setTimeout(()=>setToast(''),2200);return true};
  const save=id=>{setSaved(a=>{const has=a.includes(id);const n=has?a.filter(x=>x!==id):[...a,id];localStorage.setItem('hc-saved',JSON.stringify(n));if(!has)award(5,'Place saved','save-'+id);return n})};
  const redeem=id=>{const r=rewardCatalog.find(x=>x.id===id);if(!r||redeemed.includes(id)||xp<r.cost)return false;const nr=[...redeemed,id];const nx=xp-r.cost;setRedeemed(nr);localStorage.setItem('hc-redeemed',JSON.stringify(nr));setXp(nx);localStorage.setItem('hc-xp',nx);setToast(r.name+' redeemed');setTimeout(()=>setToast(''),2200);return true};
- const go=>{setDetail(null);setPage(p);window.scrollTo({top:0,behavior:'smooth'})};
+ const go=p=>{setDetail(null);setPage(p);window.scrollTo({top:0,behavior:'smooth'})};
  useEffect(()=>{const today=new Date().toISOString().slice(0,10);if(lastCheck!==today){const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);const ns=lastCheck===yesterday?streak+1:1;setStreak(ns);setLastCheck(today);localStorage.setItem('hc-last-check',today);localStorage.setItem('hc-streak',ns);award(10,'Daily Discovery','daily-'+today)}},[]);
  const results=useMemo(()=>places.filter(x=>(x.name+' '+x.area+' '+x.desc+' '+x.tag).toLowerCase().includes(query.toLowerCase())),[query]);
  return <div className="app">
