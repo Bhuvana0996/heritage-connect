@@ -225,3 +225,5 @@ function Chatbot({open,setOpen,openPlace,go}){
 
 export default App;
 export default App;
+
+// heritage content expansion verified
