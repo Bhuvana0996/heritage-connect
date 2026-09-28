@@ -51,7 +51,7 @@ function App(){
       </div>
     </header>
     {detail?<Detail item={detail} back={()=>setDetail(null)} save={toggleSave} saved={saved} go={go} open={setDetail}/>:<main>
-      {page==='home'&&<Home go={go} open={setDetail} prefs={prefs} setPrefs={n=>{setPrefs(n);saveJSON('hc-prefs',n)}}/>}
+      {page==='home'&&<Home go={go} open={setDetail} prefs={prefs} setPrefs={n=>{setPrefs(n);saveJSON('hc-prefs',n)}} saved={saved}/>}
       {page==='places'&&<Places items={searchResults} open={setDetail} save={toggleSave} saved={saved} query={query}/>}
       {page==='food'&&<Food open={setDetail} go={go}/>}
       {page==='cultures'&&<Cultures open={setDetail}/>}
@@ -67,7 +67,7 @@ function App(){
   </div>
 }
 
-function Home({go,open,prefs,setPrefs}){
+function Home({go,open,prefs,setPrefs,saved}){
   const areasToShow=['Chinatown','Kampong Gelam','Little India','Balestier','Tiong Bahru','Joo Chiat & Katong'];
   const featured=places.slice(0,6);
   return <div className="home">
