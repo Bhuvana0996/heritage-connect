@@ -57,9 +57,9 @@ function App(){
       {page==='cultures'&&<Cultures open={setDetail}/>}
       {page==='learn'&&<Learn open={setDetail} openChat={()=>setChat(true)} completedTasks={completedTasks} completeTask={completeTask} claimedVouchers={claimedVouchers} claimVoucher={claimVoucher} />}
       {page==='events'&&<Events go={go}/>}
-      {page==='profile'&&<Profile saved={saved} prefs={prefs} setPrefs={n=>{setPrefs(n);saveJSON('hc-prefs',n)}} go={go} open={setDetail} save={toggleSave}/>}
+      {page==='profile'&&<Profile saved={saved} prefs={prefs} setPrefs={n=>{setPrefs(n);saveJSON('hc-prefs',n)}} go={go} open={setDetail} save={toggleSave} completedTasks={completedTasks} claimedVouchers={claimedVouchers} claimVoucher={claimVoucher}/>}
       {page==='saved'&&<Saved ids={saved} save={toggleSave} open={setDetail}/>}
-      {page==='plan'&&<Plan places={places} setPlan={setPlan} plan={plan} open={setDetail}/>}
+      {page==='plan'&&<Plan places={places} setPlan={setPlan} plan={plan} open={setDetail} completeTask={completeTask} completedTasks={completedTasks} claimedVouchers={claimedVouchers} claimVoucher={claimVoucher}/>}
     </main>}
     <Chatbot open={chat} setOpen={setChat} openItem={setDetail} go={go}/>
     <nav className="mobileNav">{[['home','Home',Compass],['places','Explore',MapPin],['food','Food',Utensils],['plan','Plan',Navigation],['profile','Me',User]].map(([p,l,I])=><button key={p} onClick={()=>go(p)} className={page===p?'active':''}><I/><span>{l}</span></button>)}</nav>
